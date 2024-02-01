@@ -9,6 +9,7 @@ import {number} from "prop-types";
 import {RecoilRoot, useRecoilState} from "recoil";
 import {pageAtom} from "@/store/atoms";
 import React from "react";
+import AnimatedMount from "@/components/AnimatedMount";
 
 export default function Home() {
 
@@ -16,8 +17,10 @@ export default function Home() {
   return (
       <RecoilRoot>
           <div className={styles.root}>
-              <Header/>
-              <BottomHeader/>
+              <AnimatedMount isVisible={true}>
+                  <Header/>
+                  <BottomHeader/>
+              </AnimatedMount>
           </div>
       </RecoilRoot>
   );

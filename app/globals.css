@@ -3,6 +3,10 @@ body {
     margin: 5px 70px 5px 70px;
 }
 
+* {
+    /*transition: all .1s ease-in;*/
+}
+
 
 .my-node-enter {
     background: #9D2135;

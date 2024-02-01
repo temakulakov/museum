@@ -1,5 +1,5 @@
 .root {
-    height: 80%;
+    min-height: 85vh;
     width: 100%;
     max-width: 1920px;
     margin: 0 auto 0 auto;

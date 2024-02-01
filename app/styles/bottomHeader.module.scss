@@ -7,7 +7,9 @@
   border-top: 1px white solid;
   justify-content: space-around;
   display: flex;
-  align-items: center
+  align-items: center;
+  transition: all .1s ease-in;
+  border-radius:  0 0 5px 5px;
 }
 
 .element {
@@ -21,7 +23,6 @@
 }
 
 .menu {
-  height: 230px;
   background: #9D2135;
   transition: all .5s ease;
   color: white;
@@ -29,7 +30,9 @@
   display: flex;
   height: fit-content;
   padding: 15px 0;
-
+  //position: absolute;
+  width: 100%;
+  border-radius:  0 0 5px 5px;
 }
 
 .list {
@@ -49,14 +52,18 @@
   cursor: pointer;
   width: fit-content;
   padding-left: 15px;
+
 }
 
 
 .listNew {
   border-left: 1px white solid;
-  margin: 0 0 0 50px;
+  margin: 0 0 20px 150px;
   padding: 0 0 0 40px;
   list-style: none;
+  position: relative;
+  //height: 0;
+  //transition: all .3s ease-in;
 }
 
 .classNo {
@@ -65,7 +72,11 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  //position: absolute;
   h1 {
-    width: 100%;
+    //width: 100%;
+    text-align: center;
+    //position: absolute;
+    margin: 0 auto;
   }
 }
