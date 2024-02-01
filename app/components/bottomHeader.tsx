@@ -1,69 +1,63 @@
-'use client'
-// app/components/bottomHeader.tsx
-import React, {useState, useRef} from "react";
-import {CSSTransition} from "react-transition-group";
-import styles from "../styles/bottomHeader.module.scss"
-import "../../app/globals.css";
-import Link from "next/link";
-import { arr } from "../data";
-import {useRecoilState} from "recoil";
-import {pageAtom} from "@/store/atoms";
+import React, { useState } from 'react';
+import styles from "../styles/bottomHeader.module.scss";
+import { data } from "../data";
+import { motion } from 'framer-motion';
+import AnimatedCard from "@/components/AnimatedCard";
 
-export default () => {
-    const [select, setSelect] = useState(0);
-    const nodeRef = useRef(null);
-    const [select2, setSelect2] = useState(false)
-    const [page, setPage] = useRecoilState(pageAtom);
+const BottomHeader = () => {
+    const [select, setSelect] = useState<number | false>(false);
+    const [activeSecondLevel, setActiveSecondLevel] = useState<number | null>(null); // Добавлено новое состояние
 
-
-
-    React.useEffect(() => {
-        console.log(select)
-    }, [select]);
-
-
-    return <>
-        <div className={styles.root}>
-            {arr.map((el, index) => <div key={index}
-                                         className={styles.element}
-                                         onMouseEnter={() => setSelect(index)}
-                                         onMouseLeave={() => setSelect(0)}
-                                         onClick={() => setPage(el.label)}>{el.label}
-            </div>)}
-        </div>
-
-        <CSSTransition nodeRef={nodeRef} in={select} timeout={200} classNames="my-node">
-            <div onMouseEnter={() => setSelect(select)}
-                 onMouseLeave={() => setSelect(0)}
-                 style={select === 5 ? {height: 0} : {}}
-                 ref={nodeRef}>
-                {select > 0 ? <ol className={styles.list}>
-                    {arr[select].arr.map((el, ind) => typeof el === "string" ? <li onClick={() => setPage(el)} className={styles.listElem}
-                                                                                   key={ind}>{el}</li> : <li
-                        className={styles.listElem}
-                        onMouseEnter={() => setSelect2(true)}
-                        onClick={() => setPage(el.label)}
-                        onMouseLeave={() => setTimeout(() => {
-                            setSelect2(false)
-                        }, 3000)}
-                    >{el.label}</li>)}
-                </ol> : null}
-                {
-                    select2 ? <ul className={styles.listNew}
-                                  onMouseEnter={() => setSelect2(true)}
-                                  onMouseLeave={() => setSelect2(false)}
+    return (
+        <>
+            <div className={styles.root}>
+                {data.map((el, ind) => (
+                    <div
+                        className={styles.element}
+                        key={ind}
+                        onMouseLeave={() => {
+                            setSelect(false);
+                            setActiveSecondLevel(null); // Сбрасываем активный элемент второго уровня при уходе курсора с элемента первого уровня
+                        }}
+                        onMouseEnter={() => setSelect(ind + 1)}
                     >
-                        {arr[7].arr[0].arr.map((el, ind) => <li className={styles.listElem} onClick={() => setPage(el)} key={ind}>
-                            {el}
-                        </li>)}
-                    </ul> : null
-                }
+                        {el.label}
+                    </div>
+                ))}
             </div>
-        </CSSTransition>
-        <div className={styles.classNo}>
-            <h2 style={{position: "fixed", top: "50%"}}>
-                {`Здесь должна быть страница "${page}"`}
-            </h2>
-        </div>
-    </>
+            <AnimatedCard isVisible={!!select && select !== 5}>
+                <div
+                    className={styles.menu}
+                    onMouseLeave={() => {
+                        setSelect(false);
+                        setActiveSecondLevel(null); // Сбрасываем активный элемент второго уровня при уходе курсора с меню
+                    }}
+                >
+                    <ul className={styles.list}>
+                        {data[Number(select) - 1]?.arr?.map((element, index) => (
+                            <li
+                                className={styles.listElem}
+                                key={index}
+                                onMouseEnter={() => setActiveSecondLevel(index)} // Устанавливаем активный элемент второго уровня
+                                onMouseLeave={() => setActiveSecondLevel(null)} // Сбрасываем активный элемент второго уровня
+                            >
+                                {element.label}
+                                {element?.arr ? "    >" : null}
+                                {/* Показываем дополнительный контент для активного элемента второго уровня */}
+                                {activeSecondLevel === index && element.arr && (
+                                    <ul className={styles.listNew}>
+                                        {element.arr.map((el, idx) => (
+                                            <li className={styles.listElem} key={idx}>{el.label}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </AnimatedCard>
+        </>
+    );
 };
+
+export default BottomHeader;

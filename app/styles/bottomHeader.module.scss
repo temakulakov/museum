@@ -5,13 +5,13 @@
   //margin: 0 30px;
   border-color: white;
   border-top: 1px white solid;
-
+  justify-content: space-around;
   display: flex;
   align-items: center
 }
 
 .element {
-  font-size: 12px;
+  font-size: 15px;
   color: white;
   margin: 0 5px;
   cursor: pointer;
@@ -27,6 +27,8 @@
   color: white;
   min-height: 0;
   display: flex;
+  height: fit-content;
+  padding: 15px 0;
 
 }
 
@@ -38,10 +40,12 @@
   flex-direction: column;
   width: fit-content;
   //padding: 10px 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .listElem {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   cursor: pointer;
   width: fit-content;
   padding-left: 15px;

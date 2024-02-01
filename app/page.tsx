@@ -5,7 +5,6 @@ import Header from "@/components/header";
 import BottomHeader from "@/components/bottomHeader";
 import { useRouter } from 'next/router';
 import {router} from "next/client";
-import {arr} from "@/data";
 import {number} from "prop-types";
 import {RecoilRoot, useRecoilState} from "recoil";
 import {pageAtom} from "@/store/atoms";
