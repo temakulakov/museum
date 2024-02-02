@@ -4,7 +4,6 @@ import styles from "../styles/bottomHeader.module.scss";
 import { data } from "../data";
 import { motion } from 'framer-motion';
 import AnimatedCard from "@/components/AnimatedCard";
-import {element} from "prop-types";
 import {useRecoilState} from "recoil";
 import {pageAtom} from "@/store/atoms";
 
