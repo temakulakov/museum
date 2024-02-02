@@ -18,7 +18,7 @@ body {
 
 @font-face {
     font-family: 'TTNooks';
-    src: url('/fonts/TTNooks-Regular.woff2') format('woff2');
+    src: url('/public/fonts/TTNooks-Regular.woff2') format('woff2');
     font-weight: 500; /* Black */
     font-style: normal;
     /*font-display: swap;*/
@@ -26,7 +26,7 @@ body {
 
 @font-face {
     font-family: 'TTNooks';
-    src: url('/fonts/TTNooks-Bold.woff2') format('woff2');
+    src: url('/public/fonts/TTNooks-Bold.woff2') format('woff2');
     font-weight: 700; /* Bold */
     font-style: normal;
     /*font-display: swap;*/
@@ -34,7 +34,7 @@ body {
 
 @font-face {
     font-family: 'TTNooks';
-    src: url('/fonts/TTNooks-Black.woff2') format('woff2');
+    src: url('/public/fonts/TTNooks-Black.woff2') format('woff2');
     font-weight: 900; /* Black */
     font-style: normal;
     /*font-display: swap;*/
