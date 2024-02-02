@@ -1,11 +1,45 @@
 body {
     background: #EEF2F4;
     margin: 5px 70px 5px 70px;
+
 }
 
 * {
-    /*transition: all .1s ease-in;*/
+    font-family: 'TTNooks', sans-serif;
 }
+
+@font-face {
+    font-family: 'TTNooks';
+    src: url('/public/fonts/TTNooks-Light.woff2') format('woff2');
+    font-weight: 300; /* Предположим, что это Light */
+    font-style: normal;
+    /*font-display: swap;*/
+}
+
+@font-face {
+    font-family: 'TTNooks';
+    src: url('/fonts/TTNooks-Regular.woff2') format('woff2');
+    font-weight: 500; /* Black */
+    font-style: normal;
+    /*font-display: swap;*/
+}
+
+@font-face {
+    font-family: 'TTNooks';
+    src: url('/fonts/TTNooks-Bold.woff2') format('woff2');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+    /*font-display: swap;*/
+}
+
+@font-face {
+    font-family: 'TTNooks';
+    src: url('/fonts/TTNooks-Black.woff2') format('woff2');
+    font-weight: 900; /* Black */
+    font-style: normal;
+    /*font-display: swap;*/
+}
+
 
 
 .my-node-enter {
